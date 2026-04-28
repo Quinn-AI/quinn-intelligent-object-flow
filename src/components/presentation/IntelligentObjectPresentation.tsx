@@ -85,8 +85,8 @@ export function IntelligentObjectPresentation() {
               </span>
               <p className="max-w-xs text-[0.8rem] leading-relaxed">
                 {reduce
-                  ? "Reduced motion is on: the loop runs slower and transitions are calmer, but the active step still advances."
-                  : "The orchestration card advances one highlighted step about every five seconds; side panels follow the same phase."}
+                  ? "Reduced motion: calmer transitions; the same orchestration phase still drives signals, ranking, planning, and execution."
+                  : "Signals, viability ranking, project plan, and execution stay aligned with the active orchestration phase."}
               </p>
             </div>
           </header>

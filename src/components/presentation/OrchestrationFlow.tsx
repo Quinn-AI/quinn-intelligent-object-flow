@@ -104,8 +104,8 @@ export function OrchestrationFlow({ phase }: OrchestrationFlowProps) {
                     {active && step.id === "execute" ? (
                       <p className="mt-2 border-t border-border/60 pt-2 text-xs text-muted-foreground">
                         Use <span className="font-medium text-foreground">Accept project</span> or{" "}
-                        <span className="font-medium text-foreground">Reject project</span> in the panel below—
-                        a required reason trains your orchestrator preferences for the next project draft.
+                        <span className="font-medium text-foreground">Reject project</span> in the execution
+                        panel—a required reason trains your orchestrator preferences for the next project draft.
                       </p>
                     ) : null}
                   </div>

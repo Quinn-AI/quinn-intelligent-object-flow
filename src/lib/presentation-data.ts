@@ -23,14 +23,14 @@ export const sharedContextDemo =
   "Supra · Ontario & GTA — DLX/HUF pre-book windows, Switch buyer follow-up before May allocation, Kevin team pipeline rhythm. Agents see the same story: no duplicate outreach to Sanction / Blue Tile / Switch on overlapping threads.";
 
 export const orchestrationFlowIntro =
-  "Supra-informed walkthrough: rep calendars and standing meetings help the orchestrator decide where work is deadline-bound vs rhythm-bound—the timeline below advances one highlighted step about every five seconds.";
+  "Rep calendars and standing meetings tell the orchestrator which work is deadline-bound versus rhythm-bound before it ranks viability, composes projects and tasks, assigns agents, and hands off to execution.";
 
 /** How the CRO Orchestrator is equipped: skill + dedicated workspace/project MCP (design intent for the deck). */
 export const orchestratorSkillAndMcp =
   "The CRO Orchestrator runs with its own Markdown skill and a dedicated MCP server for project-based work: create and update workspaces and projects, assign agents to tasks, list agents in the fleet, and expose the other workspace operations the loop needs—so orchestration stays governed instead of handing every specialist a wide-open toolbelt.";
 
 export const frameworkFooterIntro =
-  "Supra’s rep command center pairs insights, projects, and actions with agent loops. The orchestrator’s skill plus its workspace MCP is how that work is applied day to day; the four designs below still define agent loops, the broader MCP catalog, per-agent skills, and the workspace data model.";
+  "Supra’s rep command center pairs insights, projects, and actions with agent loops. The orchestrator’s skill plus its workspace MCP is how that work is applied day to day; these four designs define agent loops, the broader MCP catalog, per-agent skills, and the workspace data model.";
 
 export const intelligentObjectFacets = [
   {
@@ -126,7 +126,7 @@ export const orchestrationSteps: {
 export const executePanel = {
   flowTitle: "Execute when satisfied",
   flowDescription:
-    "Explicit approval ships work into the execution framework below—or reject with context. A reason is always required so we can append a preference bullet to your orchestrator prompt and improve the next project draft for you.",
+    "Explicit approval ships work into the execution framework—or reject with context. A reason is always required so we can append a preference bullet to your orchestrator prompt and improve the next project draft for you.",
   reasonLabelAccept: "Approval reason",
   reasonLabelReject: "Rejection reason",
   reasonHelp:
