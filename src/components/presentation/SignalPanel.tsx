@@ -70,11 +70,8 @@ export function SignalPanel({ phase }: SignalPanelProps) {
                   </span>
                   <div>
                     <CardTitle className="text-sm">{section.title}</CardTitle>
-                    <CardDescription className="text-xs">
-                      {active ? "In focus for this beat of the orchestration loop." : "On standby—illuminated when its step is active."}
-                    </CardDescription>
                     {"hint" in section ? (
-                      <CardDescription className="text-[0.65rem] leading-relaxed text-muted-foreground/95">
+                      <CardDescription className="mt-0.5 text-[0.65rem] leading-relaxed text-muted-foreground/95">
                         {section.hint}
                       </CardDescription>
                     ) : null}
