@@ -18,14 +18,16 @@ export function IntelligentObjectDiagram() {
       <div className="flex flex-wrap items-end justify-between gap-4">
         <div>
           <p className="text-xs font-medium tracking-[0.2em] text-muted-foreground uppercase">
-            Anatomy
+            Pre-built
           </p>
           <h2 className="font-heading text-xl font-semibold tracking-tight sm:text-2xl">
-            What feeds an intelligent object
+            Intelligent objects the orchestrator leverages
           </h2>
         </div>
         <p className="max-w-md text-sm text-muted-foreground">
-          Three inputs converge into a single orchestration artifact the CRO Agent can reason over.
+          Each intelligent object already carries directives, projected ROI, and additional relevant data. The
+          CRO Orchestrator reads and leverages that bundle—it does not originate those facets here—as it
+          plans and assigns work.
         </p>
       </div>
 
@@ -68,10 +70,10 @@ export function IntelligentObjectDiagram() {
                   Intelligent object
                 </span>
               </div>
-              <CardTitle className="text-lg sm:text-xl">Unified decision payload</CardTitle>
+              <CardTitle className="text-lg sm:text-xl">Authoritative bundle</CardTitle>
               <CardDescription className="text-sm leading-relaxed">
-                Directives, ROI, and live context compress into one object the orchestrator treats as
-                authoritative for prioritization.
+                Produced before this run. The orchestrator consumes the intelligent object as the source of
+                truth for prioritization, sequencing, and handoff.
               </CardDescription>
             </CardHeader>
             <CardContent className="relative z-10 pt-0">

@@ -18,7 +18,7 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: "Intelligent Object Flowchart",
   description:
-    "Animated presentation of how the CRO Agent orchestrates intelligent objects into projects, tasks, and execution.",
+    "Animated presentation of how the CRO Orchestrator leverages pre-built intelligent objects to plan projects, tasks, and execution.",
 };
 
 export default function RootLayout({

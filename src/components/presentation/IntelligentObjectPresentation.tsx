@@ -4,18 +4,18 @@ import { useEffect, useState } from "react";
 import { useReducedMotion } from "motion/react";
 import { PlayCircle, Sparkles } from "lucide-react";
 
-import { Button } from "@/components/ui/button";
-import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip";
 import {
   assignmentLegend,
+  executePanel,
   hero,
   isContextPhase,
   isExecutePhase,
   orchestrationPhases,
+  orchestrationStepHighlightMs,
+  sharedContextDemo,
   type OrchestrationPhaseId,
 } from "@/lib/presentation-data";
-import { cn } from "@/lib/utils";
-
+import { ExecuteDecisionPanel } from "./ExecuteDecisionPanel";
 import { FrameworkFooter } from "./FrameworkFooter";
 import { IntelligentObjectDiagram } from "./IntelligentObjectDiagram";
 import { OrchestrationFlow } from "./OrchestrationFlow";
@@ -26,8 +26,6 @@ import { AnimatedReveal } from "./primitives/AnimatedReveal";
 import { FlowNode } from "./primitives/FlowNode";
 import { MetricChip } from "./primitives/MetricChip";
 
-const phaseDurationMs = 2800;
-
 export function IntelligentObjectPresentation() {
   const reduce = useReducedMotion();
   const [phaseIndex, setPhaseIndex] = useState(0);
@@ -36,14 +34,13 @@ export function IntelligentObjectPresentation() {
     orchestrationPhases[phaseIndex] ?? orchestrationPhases[0]!;
 
   useEffect(() => {
-    if (reduce) {
-      return;
-    }
+    const ms = reduce ? Math.max(orchestrationStepHighlightMs * 2, 2_000) : orchestrationStepHighlightMs;
     const id = window.setInterval(() => {
       setPhaseIndex((current) => (current + 1) % orchestrationPhases.length);
-    }, phaseDurationMs);
+    }, ms);
     return () => window.clearInterval(id);
-  }, [reduce]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps -- orchestrationStepHighlightMs is immutable; keep in deps so array arity stays stable (React dev / HMR).
+  }, [reduce, orchestrationStepHighlightMs]);
 
   return (
     <div className="relative isolate min-h-screen overflow-hidden bg-background text-foreground">
@@ -77,6 +74,9 @@ export function IntelligentObjectPresentation() {
                 <p className="max-w-2xl text-pretty text-sm text-muted-foreground sm:text-base">
                   {hero.subtitle}
                 </p>
+                <p className="max-w-2xl text-pretty text-xs text-muted-foreground/90 sm:text-sm">
+                  {hero.partnerNote}
+                </p>
               </div>
             </div>
             <div className="flex flex-col items-start gap-2 text-xs text-muted-foreground">
@@ -85,8 +85,8 @@ export function IntelligentObjectPresentation() {
               </span>
               <p className="max-w-xs text-[0.8rem] leading-relaxed">
                 {reduce
-                  ? "Reduced motion: phases stay static for clarity."
-                  : "The deck loops continuously—each beat spotlights a different orchestration surface."}
+                  ? "Reduced motion is on: the loop runs slower and transitions are calmer, but the active step still advances."
+                  : "The orchestration card advances one highlighted step about every five seconds; side panels follow the same phase."}
               </p>
             </div>
           </header>
@@ -113,8 +113,7 @@ export function IntelligentObjectPresentation() {
           >
             <div className="space-y-3 text-sm text-muted-foreground">
               <div className="rounded-lg border border-dashed border-border/80 bg-muted/30 px-3 py-3 font-mono text-xs leading-relaxed text-foreground/90">
-                Q3 margin recovery · exec readout on Thursdays · pricing experiments owned by finance · no
-                duplicate outreach to the same partner accounts.
+                {sharedContextDemo}
               </div>
               <div className="flex flex-wrap gap-2">
                 {assignmentLegend.map((item) => (
@@ -131,45 +130,13 @@ export function IntelligentObjectPresentation() {
           </FlowNode>
 
           <FlowNode
-            title="Execute when satisfied"
-            description="Approving freezes the plan and hands execution to the stack below—loops, MCP-governed tools, skills, and workspace-native tasks."
+            title={executePanel.flowTitle}
+            description={executePanel.flowDescription}
             active={isExecutePhase(phase)}
             icon={<PlayCircle className="size-4" />}
             className="h-full justify-between border-border/70 bg-gradient-to-b from-card via-card to-muted/30"
           >
-            <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
-              <Tooltip>
-                <TooltipTrigger asChild>
-                  <Button
-                    size="lg"
-                    className={cn(
-                      "relative overflow-hidden px-6 text-base shadow-lg shadow-sidebar-primary/15 transition-all",
-                      isExecutePhase(phase) &&
-                        "ring-2 ring-sidebar-primary/60 shadow-[0_20px_80px_-24px_color-mix(in_oklab,var(--color-sidebar-primary)_40%,transparent)]"
-                    )}
-                    style={
-                      isExecutePhase(phase)
-                        ? {
-                            backgroundImage:
-                              "linear-gradient(110deg, color-mix(in oklab, var(--color-sidebar-primary) 35%, transparent), transparent 40%, color-mix(in oklab, var(--color-sidebar-primary) 25%, transparent))",
-                            backgroundSize: "220% 100%",
-                            animation: "flow-shimmer 2.4s linear infinite",
-                          }
-                        : undefined
-                    }
-                  >
-                    Execute plan
-                  </Button>
-                </TooltipTrigger>
-                <TooltipContent side="top" className="max-w-xs text-xs leading-relaxed">
-                  Static presentation control—wire this to your orchestration API when you are ready.
-                </TooltipContent>
-              </Tooltip>
-              <p className="text-xs text-muted-foreground">
-                Tasks remain editable until execute; assignments can move between agent, human assist, and
-                scheduled loops.
-              </p>
-            </div>
+            <ExecuteDecisionPanel phaseActive={isExecutePhase(phase)} />
           </FlowNode>
         </div>
 

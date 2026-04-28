@@ -21,6 +21,7 @@ const sections = [
     title: signalPanel.profiles.title,
     items: signalPanel.profiles.items,
     icon: CalendarDays,
+    hint: signalPanel.profiles.hint,
   },
   {
     key: "fleet" as const,
@@ -28,7 +29,7 @@ const sections = [
     items: signalPanel.fleet.items,
     icon: Orbit,
   },
-];
+] as const;
 
 export function SignalPanel({ phase }: SignalPanelProps) {
   const highlight = getSignalHighlight(phase);
@@ -40,7 +41,7 @@ export function SignalPanel({ phase }: SignalPanelProps) {
           <p className="text-xs font-medium tracking-[0.2em] text-muted-foreground uppercase">
             Live signals
           </p>
-          <h3 className="font-heading text-base font-semibold tracking-tight">What the CRO Agent reads</h3>
+          <h3 className="font-heading text-base font-semibold tracking-tight">What the CRO Orchestrator reads</h3>
         </div>
       </div>
       <div className="grid gap-3">
@@ -72,6 +73,11 @@ export function SignalPanel({ phase }: SignalPanelProps) {
                     <CardDescription className="text-xs">
                       {active ? "In focus for this beat of the orchestration loop." : "On standby—illuminated when its step is active."}
                     </CardDescription>
+                    {"hint" in section ? (
+                      <CardDescription className="text-[0.65rem] leading-relaxed text-muted-foreground/95">
+                        {section.hint}
+                      </CardDescription>
+                    ) : null}
                   </div>
                 </div>
               </CardHeader>

@@ -1,7 +1,7 @@
 import { BookMarked, Boxes, Cable, Workflow } from "lucide-react";
 
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { frameworkDocs } from "@/lib/presentation-data";
+import { frameworkDocs, frameworkFooterIntro } from "@/lib/presentation-data";
 
 const icons = [Workflow, Cable, BookMarked, Boxes] as const;
 
@@ -17,10 +17,7 @@ export function FrameworkFooter() {
             What actually runs the plan
           </h2>
         </div>
-        <p className="max-w-lg text-sm text-muted-foreground">
-          These four designs are the contracts powering tasks, loops, governed tools, and workspace-native
-          delivery.
-        </p>
+        <p className="max-w-lg text-sm text-muted-foreground">{frameworkFooterIntro}</p>
       </div>
 
       <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-4">
