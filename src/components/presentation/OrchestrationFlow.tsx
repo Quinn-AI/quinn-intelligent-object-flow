@@ -7,6 +7,7 @@ import { Badge } from "@/components/ui/badge";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import {
   orchestrationFlowIntro,
+  orchestratorSkillAndMcp,
   orchestrationSteps,
   type OrchestrationPhaseId,
 } from "@/lib/presentation-data";
@@ -32,7 +33,12 @@ export function OrchestrationFlow({ phase }: OrchestrationFlowProps) {
               Orchestrator
             </p>
             <CardTitle className="text-lg sm:text-xl">CRO Orchestrator control plane</CardTitle>
-            <CardDescription className="text-xs sm:text-sm">{orchestrationFlowIntro}</CardDescription>
+            <div className="space-y-2">
+              <CardDescription className="text-xs sm:text-sm">{orchestrationFlowIntro}</CardDescription>
+              <p className="text-xs leading-relaxed text-muted-foreground sm:text-sm">
+                {orchestratorSkillAndMcp}
+              </p>
+            </div>
           </div>
           <Badge variant="secondary" className="gap-1 rounded-full px-3 py-1 text-[0.7rem]">
             <Bot className="size-3.5" />

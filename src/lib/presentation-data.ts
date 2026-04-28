@@ -25,8 +25,12 @@ export const sharedContextDemo =
 export const orchestrationFlowIntro =
   "Supra-informed walkthrough: rep calendars and standing meetings help the orchestrator decide where work is deadline-bound vs rhythm-bound—the timeline below advances one highlighted step about every five seconds.";
 
+/** How the CRO Orchestrator is equipped: skill + dedicated workspace/project MCP (design intent for the deck). */
+export const orchestratorSkillAndMcp =
+  "The CRO Orchestrator runs with its own Markdown skill and a dedicated MCP server for project-based work: create and update workspaces and projects, assign agents to tasks, list agents in the fleet, and expose the other workspace operations the loop needs—so orchestration stays governed instead of handing every specialist a wide-open toolbelt.";
+
 export const frameworkFooterIntro =
-  "Supra’s rep command center pairs insights, projects, and actions with agent loops; these four designs are the platform contracts that make that execution governable and repeatable.";
+  "Supra’s rep command center pairs insights, projects, and actions with agent loops. The orchestrator’s skill plus its workspace MCP is how that work is applied day to day; the four designs below still define agent loops, the broader MCP catalog, per-agent skills, and the workspace data model.";
 
 export const intelligentObjectFacets = [
   {
